@@ -14,4 +14,4 @@ Team Members:
   - Yassine
 
 Purpose:
-  To create a low-cost breath analyzer that can be handed out to students and other yound members of society as a tool to raise awareness about the dangers of driving under the influence of alcohol.
+  To create a low-cost breath analyzer that can be handed out to students and other young members of society as a tool to raise awareness about the dangers of driving under the influence of alcohol.
