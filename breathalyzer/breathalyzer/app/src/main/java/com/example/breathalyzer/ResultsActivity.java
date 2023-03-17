@@ -24,7 +24,7 @@ public class ResultsActivity extends AppCompatActivity {
     //Variable for Database
     DatabaseReference databaseReference;
     String test, test2;
-    private TextView percentAlcohol, ;
+    private TextView percentAlcohol;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
