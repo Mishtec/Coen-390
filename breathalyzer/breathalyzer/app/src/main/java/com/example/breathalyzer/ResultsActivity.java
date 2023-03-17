@@ -48,7 +48,7 @@ public class ResultsActivity extends AppCompatActivity {
 
 
 
-                //shake hands with each of them
+              
 
             }
 
