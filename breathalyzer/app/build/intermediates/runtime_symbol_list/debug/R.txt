@@ -26,6 +26,7 @@ int anim design_bottom_sheet_slide_in 0x7f010018
 int anim design_bottom_sheet_slide_out 0x7f010019
 int anim design_snackbar_in 0x7f01001a
 int anim design_snackbar_out 0x7f01001b
+int anim disclaimer_anim 0x7f01002a
 int anim fragment_fast_out_extra_slow_in 0x7f01001c
 int anim linear_indeterminate_line1_head_interpolator 0x7f01001d
 int anim linear_indeterminate_line1_tail_interpolator 0x7f01001e
@@ -1322,6 +1323,9 @@ int color cardview_dark_background 0x7f05002a
 int color cardview_light_background 0x7f05002b
 int color cardview_shadow_end_color 0x7f05002c
 int color cardview_shadow_start_color 0x7f05002d
+int color colorAccent 0x7f05028f
+int color colorPrimary 0x7f050290
+int color colorPrimaryDark 0x7f050291
 int color common_google_signin_btn_text_dark 0x7f05002e
 int color common_google_signin_btn_text_dark_default 0x7f05002f
 int color common_google_signin_btn_text_dark_disabled 0x7f050030
@@ -2845,6 +2849,7 @@ int id ALT 0x7f080000
 int id BOTTOM_END 0x7f080001
 int id BOTTOM_START 0x7f080002
 int id CTRL 0x7f080003
+int id Disclaimer 0x7f0801fc
 int id FUNCTION 0x7f080004
 int id META 0x7f080005
 int id NO_DEBUG 0x7f080006
@@ -3087,7 +3092,7 @@ int id line3 0x7f0800f2
 int id linear 0x7f0800f3
 int id listMode 0x7f0800f4
 int id list_item 0x7f0800f5
-int id loadingPanel 0x7f0800f6
+int id loading_text 0x7f0801fd
 int id m3_side_sheet 0x7f0800f7
 int id mainText 0x7f0800f8
 int id marquee 0x7f0800f9
@@ -3189,6 +3194,7 @@ int id pin 0x7f080158
 int id position 0x7f080159
 int id postLayout 0x7f08015a
 int id pressed 0x7f08015b
+int id progress_bar 0x7f0801fe
 int id progress_circular 0x7f08015c
 int id progress_horizontal 0x7f08015d
 int id radio 0x7f08015e
@@ -3272,7 +3278,6 @@ int id startToEnd 0x7f0801ab
 int id startVertical 0x7f0801ac
 int id staticLayout 0x7f0801ad
 int id staticPostLayout 0x7f0801ae
-int id status 0x7f0801af
 int id stop 0x7f0801b0
 int id stretch 0x7f0801b1
 int id submenuarrow 0x7f0801b2
@@ -3303,6 +3308,7 @@ int id textTop 0x7f0801ca
 int id text_input_end_icon 0x7f0801cb
 int id text_input_error_icon 0x7f0801cc
 int id text_input_start_icon 0x7f0801cd
+int id text_view 0x7f0801ff
 int id textinput_counter 0x7f0801ce
 int id textinput_error 0x7f0801cf
 int id textinput_helper_text 0x7f0801d0
@@ -3567,6 +3573,7 @@ int string abc_searchview_description_voice 0x7f0f0017
 int string abc_shareactionprovider_share_with 0x7f0f0018
 int string abc_shareactionprovider_share_with_application 0x7f0f0019
 int string abc_toolbar_collapse_description 0x7f0f001a
+int string android_animations_lib_name 0x7f0f00b8
 int string androidx_startup 0x7f0f001b
 int string app_name 0x7f0f001c
 int string appbar_scrolling_view_behavior 0x7f0f001d
@@ -3733,6 +3740,7 @@ int style Animation_Design_BottomSheetDialog 0x7f100005
 int style Animation_Material3_BottomSheetDialog 0x7f100006
 int style Animation_Material3_SideSheetDialog 0x7f100007
 int style Animation_MaterialComponents_BottomSheetDialog 0x7f100008
+int style AppTheme 0x7f100446
 int style Base_AlertDialog_AppCompat 0x7f100009
 int style Base_AlertDialog_AppCompat_Light 0x7f10000a
 int style Base_Animation_AppCompat_Dialog 0x7f10000b
