@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#216869"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <TextView
+
+        android:id="@+id/text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/progress_bar"
+        android:layout_centerHorizontal="true"
+        android:text="0%"
+        android:textColor="#FCBCB8"
+        android:textSize="25sp" />
+
+
+    <TextView
+
+        android:id="@+id/loading_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/text_view"
+        android:layout_marginBottom="62dp"
+        android:text=". . . Processing Data . . ."
+        android:textAlignment="center"
+        android:textColor="#FCBCB8"
+        android:textSize="20sp" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="290dp" />
+
+    <TextView
+        android:id="@+id/Disclaimer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="301dp"
+        android:text="The sole purpose of this product is to detect the possibility of alcohol in the bloodstream.\n
+The user should take full responsibility for his or her own decision to operate a vehicle after doing this test."
+        android:textAlignment="center"
+        android:textColor="#D3CBCA"
+        android:textSize="20sp"/>
+
+
+</RelativeLayout>
