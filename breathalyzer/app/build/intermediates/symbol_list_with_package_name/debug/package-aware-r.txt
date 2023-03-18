@@ -27,6 +27,7 @@ anim design_bottom_sheet_slide_in
 anim design_bottom_sheet_slide_out
 anim design_snackbar_in
 anim design_snackbar_out
+anim disclaimer_anim
 anim fragment_fast_out_extra_slow_in
 anim linear_indeterminate_line1_head_interpolator
 anim linear_indeterminate_line1_tail_interpolator
@@ -1323,6 +1324,9 @@ color cardview_dark_background
 color cardview_light_background
 color cardview_shadow_end_color
 color cardview_shadow_start_color
+color colorAccent
+color colorPrimary
+color colorPrimaryDark
 color common_google_signin_btn_text_dark
 color common_google_signin_btn_text_dark_default
 color common_google_signin_btn_text_dark_disabled
@@ -2846,6 +2850,7 @@ id ALT
 id BOTTOM_END
 id BOTTOM_START
 id CTRL
+id Disclaimer
 id FUNCTION
 id META
 id NO_DEBUG
@@ -3088,7 +3093,7 @@ id line3
 id linear
 id listMode
 id list_item
-id loadingPanel
+id loading_text
 id m3_side_sheet
 id mainText
 id marquee
@@ -3190,6 +3195,7 @@ id pin
 id position
 id postLayout
 id pressed
+id progress_bar
 id progress_circular
 id progress_horizontal
 id radio
@@ -3273,7 +3279,6 @@ id startToEnd
 id startVertical
 id staticLayout
 id staticPostLayout
-id status
 id stop
 id stretch
 id submenuarrow
@@ -3304,6 +3309,7 @@ id textTop
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
+id text_view
 id textinput_counter
 id textinput_error
 id textinput_helper_text
@@ -3568,6 +3574,7 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string android_animations_lib_name
 string androidx_startup
 string app_name
 string appbar_scrolling_view_behavior
@@ -3734,6 +3741,7 @@ style Animation_Design_BottomSheetDialog
 style Animation_Material3_BottomSheetDialog
 style Animation_Material3_SideSheetDialog
 style Animation_MaterialComponents_BottomSheetDialog
+style AppTheme
 style Base_AlertDialog_AppCompat
 style Base_AlertDialog_AppCompat_Light
 style Base_Animation_AppCompat_Dialog
