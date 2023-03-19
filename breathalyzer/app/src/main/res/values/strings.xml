@@ -3,4 +3,5 @@
     <string name="take_reading">Take Reading</string>
     <string name="be_sure_to_take_a_deep_breath_and_exhale_into_mouthpiece">Be sure to take a deep breath and exhale into mouthpiece</string>
     <string name="db_drop" />
+    <string name="resultMessage">placeholder</string>
 </resources>

@@ -23,6 +23,7 @@ id loading_text
 id mainText
 id percentAlcohol
 id progress_bar
+id resultLayout
 id resultMessage
 id takeRead
 id text_view
@@ -43,6 +44,7 @@ string google_app_id
 string google_crash_reporting_api_key
 string google_storage_bucket
 string project_id
+string resultMessage
 string take_reading
 style AppTheme
 style Theme.Breathalyzer

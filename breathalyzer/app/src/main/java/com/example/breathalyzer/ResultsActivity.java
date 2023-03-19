@@ -2,7 +2,10 @@ package com.example.breathalyzer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.ActivityManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
@@ -24,6 +27,8 @@ public class ResultsActivity extends AppCompatActivity {
     //Variable for Database
     DatabaseReference databaseReference;
     private TextView percentAlcohol;
+    private TextView resultMessage;
+    private ConstraintLayout resultLayout;
     String bac;
 
     @Override
@@ -49,10 +54,28 @@ public class ResultsActivity extends AppCompatActivity {
                 // extracting only the value of bac
                 String[] arrOfStr = bac.split(" ", 2);
                 bac = arrOfStr[0];
-
                 percentAlcohol = findViewById(R.id.percentAlcohol);
                 percentAlcohol.setText(bac);
 
+                float bacFloat = Float.parseFloat(bac);
+                //float bacFloat = (float) 0.06; //use this line to test variable message. comment out previous line.
+                resultMessage = findViewById(R.id.resultMessage);
+                resultLayout = findViewById(R.id.resultLayout);
+
+                if(bacFloat<(float)0.08) {
+
+                    if(bacFloat<(float)0.05) {
+                        resultMessage.setText("You're good to go!");
+                        resultLayout.setBackgroundColor(Color.argb(255, 152, 251, 152));
+                    }
+                    else{
+                        resultMessage.setText("Caution! You are under the legal limit, but you are still impaired!");
+                        resultLayout.setBackgroundColor(Color.argb(255, 203, 96, 21));
+                        }}
+                    else{
+                        resultMessage.setText("Warning! You are intoxicated. It is neither safe, nor legal for you to drive. Seek alternate transportation.");
+                        resultLayout.setBackgroundColor(Color.argb(255, 220, 20, 60));
+                    }
             }
 
 
