@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/resultLayout"
     tools:context=".ResultsActivity">
 
     <ImageView
@@ -21,7 +22,7 @@
         android:id="@+id/percentAlcohol"
         android:layout_width="204dp"
         android:layout_height="45dp"
-        android:text="placeholder"
+        android:text="@string/resultMessage"
         android:textAlignment="center"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -35,8 +36,8 @@
     <TextView
         android:id="@+id/resultMessage"
         android:layout_width="204dp"
-        android:layout_height="45dp"
-        android:text="palceholder"
+        android:layout_height="wrap_content"
+        android:text="@string/resultMessage"
         android:textAlignment="center"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -46,5 +47,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/percentAlcohol"
         app:layout_constraintVertical_bias="0.141" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

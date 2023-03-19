@@ -3201,6 +3201,7 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id resultLayout
 id resultMessage
 id reverseSawtooth
 id right
@@ -3724,6 +3725,7 @@ string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
 string project_id
+string resultMessage
 string search_menu_title
 string searchbar_scrolling_view_behavior
 string searchview_clear_text_content_description
