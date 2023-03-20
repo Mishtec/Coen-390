@@ -7,12 +7,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.example.breathalyzer.R;
+import com.example.breathalyzer.model.History;
 import com.example.breathalyzer.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
 public class DatabaseHandler extends SQLiteOpenHelper {
-    public static int ID = 0;
     public DatabaseHandler(Context context) {
         super(context, Util.DATABASE_NAME, null, Util.DATABASE_VERSION);
     }
@@ -31,17 +31,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         String DROP_TABLE = String.valueOf(R.string.db_drop);
         db.execSQL(DROP_TABLE, new String[]{Util.DATABASE_NAME});
-
         //Create a table again
         onCreate(db);
     }
 
     //Add History
-    public void addHistory(readingHistory history) {
+    public void addHistory(History history) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(Util.KEY_ID, history.getId());
         values.put(Util.KEY_BAC, history.getBac());
         values.put(Util.KEY_TIMESTAMP, history.getTimeStamp());
 
@@ -52,8 +50,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     //Get all History
-    public List<readingHistory> getAllHistory() {
-        List<readingHistory> historyList = new ArrayList<>();
+    public List<History> getAllHistory() {
+        List<History> historyList = new ArrayList<>();
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -63,7 +61,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //Loop through our data
         if (cursor.moveToFirst()) {
             do {
-                readingHistory history = new readingHistory();
+                History history = new History();
                 history.setId(Integer.parseInt(cursor.getString(0)));
                 history.setBac(Float.parseFloat(cursor.getString(1)));
                 history.setTimeStamp(cursor.getString(2));

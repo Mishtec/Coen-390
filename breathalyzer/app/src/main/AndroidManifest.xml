@@ -18,7 +18,7 @@
             android:name=".HistoryActivity"
             android:exported="false" />
         <activity
-            android:name=".LoadingAcitiviy"
+            android:name=".ui.LoadingActivity"
             android:exported="false" />
         <activity
             android:name=".ResultsActivity"

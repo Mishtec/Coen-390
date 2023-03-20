@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/text_view"
-        android:layout_marginBottom="62dp"
+        android:layout_marginBottom="53dp"
         android:text=". . . Processing Data . . ."
         android:textAlignment="center"
         android:textColor="#FCBCB8"
@@ -44,14 +44,30 @@
 
     <TextView
         android:id="@+id/Disclaimer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="301dp"
-        android:text="The sole purpose of this product is to detect the possibility of alcohol in the bloodstream.\n
-The user should take full responsibility for his or her own decision to operate a vehicle after doing this test."
-        android:textAlignment="center"
+        android:layout_width="395dp"
+        android:layout_height="194dp"
+        android:layout_above="@+id/loading_text"
+        android:layout_below="@+id/imageView3"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="52dp"
+        android:lineSpacingExtra="5sp"
+        android:text="The sole purpose of this product is to detect the possibility of alcohol in the bloodstream.\nThe user should take full responsibility for his or her own decision to operate a vehicle after doing this test."
+        android:textAlignment="viewStart"
         android:textColor="#D3CBCA"
-        android:textSize="20sp"/>
+        android:textSize="16sp"
+        android:textStyle="italic" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="58dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="150dp"
+        app:srcCompat="@drawable/disclamer" />
 
 
 </RelativeLayout>

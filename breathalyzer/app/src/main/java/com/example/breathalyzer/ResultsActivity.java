@@ -4,17 +4,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.app.ActivityManager;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.breathalyzer.data.DatabaseHandler;
-import com.example.breathalyzer.data.readingHistory;
-import com.example.breathalyzer.util.Clock;
+import com.example.breathalyzer.model.History;
+import com.example.breathalyzer.ui.LoadingActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,6 +27,8 @@ public class ResultsActivity extends AppCompatActivity {
     //Variable for Database
     DatabaseReference databaseReference;
     private TextView percentAlcohol;
+    private Button backButton;
+
     private TextView resultMessage;
     private ConstraintLayout resultLayout;
     String bac;
@@ -36,8 +38,22 @@ public class ResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_results);
+        percentAlcohol = findViewById(R.id.percentAlcohol);
+        backButton = findViewById(R.id.back_button);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        backButton.setOnClickListener(view -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            // add last BAC reading to the history
+            History lastData = new History();
+            lastData.setBac(Float.valueOf(bac));
+            lastData.setTimeStamp();
+            DatabaseHandler db = new DatabaseHandler(ResultsActivity.this);
+            db.addHistory(lastData);
+        });
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //instance of firebase database
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -54,8 +70,7 @@ public class ResultsActivity extends AppCompatActivity {
                 // extracting only the value of bac
                 String[] arrOfStr = bac.split(" ", 2);
                 bac = arrOfStr[0];
-                percentAlcohol = findViewById(R.id.percentAlcohol);
-                percentAlcohol.setText(bac);
+                percentAlcohol.setText(bac + " %");
 
                 float bacFloat = Float.parseFloat(bac);
                 //float bacFloat = (float) 0.06; //use this line to test variable message. comment out previous line.
@@ -76,29 +91,12 @@ public class ResultsActivity extends AppCompatActivity {
                         resultMessage.setText("Warning! You are intoxicated. It is neither safe, nor legal for you to drive. Seek alternate transportation.");
                         resultLayout.setBackgroundColor(Color.argb(255, 220, 20, 60));
                     }
+
             }
-
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
-
-
             }
         });
-
-
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        // add last BAC reading to the history
-        readingHistory lastData = new readingHistory();
-        lastData.setId(++DatabaseHandler.ID);
-        lastData.setBac(Float.valueOf(bac));
-        lastData.setTimeStamp();
-        DatabaseHandler db = new DatabaseHandler(ResultsActivity.this);
-        db.addHistory(lastData);
     }
 }
