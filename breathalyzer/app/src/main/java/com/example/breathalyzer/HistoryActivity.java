@@ -3,10 +3,12 @@ package com.example.breathalyzer;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -21,6 +23,7 @@ public class HistoryActivity extends AppCompatActivity {
     private ListView listView;
     private ArrayList<String> historyArrayList;
     private ArrayAdapter<String> arrayAdapter;
+    private Button historyBackButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,16 +44,21 @@ public class HistoryActivity extends AppCompatActivity {
             historyArrayList.add(history.getBac()
                     + " collected on " + history.getTimeStamp());
         }
-
         //create array adapter
         arrayAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
                 historyArrayList
         );
-
         //add to our listview
         listView.setAdapter(arrayAdapter);
+
+        // Setup Back button
+        historyBackButton = findViewById(R.id.history_back_button);
+        historyBackButton.setOnClickListener(view -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        });
 
 //        historyView = findViewById(R.id.history_textView);
 //        DatabaseHandler db = new DatabaseHandler(HistoryActivity.this);

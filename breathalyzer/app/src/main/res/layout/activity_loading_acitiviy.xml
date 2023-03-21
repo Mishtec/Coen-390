@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/text_view"
-        android:layout_marginBottom="53dp"
+        android:layout_marginBottom="36dp"
         android:text=". . . Processing Data . . ."
         android:textAlignment="center"
         android:textColor="#FCBCB8"
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="290dp" />
+        android:layout_marginBottom="262dp" />
 
     <TextView
         android:id="@+id/Disclaimer"
@@ -48,9 +48,9 @@
         android:layout_height="194dp"
         android:layout_above="@+id/loading_text"
         android:layout_below="@+id/imageView3"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="52dp"
-        android:lineSpacingExtra="5sp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="51dp"
+        android:lineSpacingExtra="2sp"
         android:text="The sole purpose of this product is to detect the possibility of alcohol in the bloodstream.\nThe user should take full responsibility for his or her own decision to operate a vehicle after doing this test."
         android:textAlignment="viewStart"
         android:textColor="#D3CBCA"
@@ -64,7 +64,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="125dp"
+        android:layout_marginStart="140dp"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="150dp"
         app:srcCompat="@drawable/disclamer" />

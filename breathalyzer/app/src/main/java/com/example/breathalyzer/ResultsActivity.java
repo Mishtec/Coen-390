@@ -39,12 +39,14 @@ public class ResultsActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_results);
         percentAlcohol = findViewById(R.id.percentAlcohol);
-        backButton = findViewById(R.id.back_button);
 
+        // Setup Back button
+        backButton = findViewById(R.id.back_button);
         backButton.setOnClickListener(view -> {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-            // add last BAC reading to the history
+
+            // add last BAC reading to the history database
             History lastData = new History();
             lastData.setBac(Float.valueOf(bac));
             lastData.setTimeStamp();
@@ -79,7 +81,7 @@ public class ResultsActivity extends AppCompatActivity {
 
                 if(bacFloat<(float)0.08) {
 
-                    if(bacFloat<(float)0.05) {
+                    if(bacFloat<(float)0.03) {
                         resultMessage.setText("You're good to go!");
                         resultLayout.setBackgroundColor(Color.argb(255, 152, 251, 152));
                     }
