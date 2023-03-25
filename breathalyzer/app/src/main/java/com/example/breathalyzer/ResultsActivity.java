@@ -108,7 +108,6 @@ public class ResultsActivity extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-        getLastRecording();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
