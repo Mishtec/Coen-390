@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         //Setup TakeRead button
         readButton = findViewById(R.id.takeRead);
         readButton.setOnClickListener(view -> {
-            Toast.makeText(getApplicationContext(), "Measuring...", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Measuring...", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, LoadingActivity.class);
             startActivity(i); // launchMeasurementPage();
             // For testing purpose skip loadingPage
