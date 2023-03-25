@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 //        readButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                // Toast.makeText(getApplicationContext(), "Measuring...", Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(), "Measuring...", Toast.LENGTH_SHORT).show();
 //                launchLoadingPage(); // launchMeasurementPage();
 //                // For testing purpose skip loadingPage
 //            }
