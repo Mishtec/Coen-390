@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.breathalyzer.ui.LoadingActivity;
 
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         //Setup TakeRead button
         readButton = findViewById(R.id.takeRead);
         readButton.setOnClickListener(view -> {
-            // Toast.makeText(getApplicationContext(), "Measuring...", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Measuring...", Toast.LENGTH_LONG).show();
             Intent i = new Intent(this, LoadingActivity.class);
             startActivity(i); // launchMeasurementPage();
             // For testing purpose skip loadingPage

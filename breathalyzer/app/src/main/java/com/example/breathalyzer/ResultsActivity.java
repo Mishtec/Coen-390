@@ -38,6 +38,7 @@ public class ResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_results);
+        setTitle("Results");
         percentAlcohol = findViewById(R.id.percentAlcohol);
 
         // Setup Back button
@@ -53,6 +54,8 @@ public class ResultsActivity extends AppCompatActivity {
             DatabaseHandler db = new DatabaseHandler(ResultsActivity.this);
             db.addHistory(lastData);
         });
+
+
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -101,4 +104,30 @@ public class ResultsActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        getLastRecording();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onStop() {
+
+        getLastRecording();
+        super.onStop();
+    }
+
+    public void getLastRecording()
+    {
+        // add last BAC reading to the history database
+        History lastData = new History();
+        lastData.setBac(Float.valueOf(bac));
+        lastData.setTimeStamp();
+        DatabaseHandler db = new DatabaseHandler(ResultsActivity.this);
+        db.addHistory(lastData);
+    }
+
 }
