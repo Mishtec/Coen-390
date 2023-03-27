@@ -6,15 +6,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.breathalyzer.ui.LoadingActivity;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
     protected Button readButton;
     private Button historyButton;
+    private Switch drinkButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +41,30 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, HistoryActivity.class);
             startActivity(intent);
         });
+
+        //Setup Drink Water button
+        drinkButton = findViewById(R.id.drinkReminder);
+        drinkButton.setOnCheckedChangeListener(this);
     }
+
+
     //send Alerts through user input String
     public void Alerts(String input)
     {
         Toast.makeText(this, input, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        switch (compoundButton.getId()){
+            case R.id.drinkReminder:
+                if (b)
+                    Alerts("Reminder ON");
+                else
+                    Alerts("Reminder OFF");
+                break;
+        }
+
     }
 
     //If there is anything to set up in the future for app start up
