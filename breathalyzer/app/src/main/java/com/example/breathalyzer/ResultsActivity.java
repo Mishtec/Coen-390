@@ -27,7 +27,6 @@ public class ResultsActivity extends AppCompatActivity {
     //Variable for Database
     DatabaseReference databaseReference;
     private TextView percentAlcohol;
-    private Button backButton;
 
     private TextView resultMessage;
     private ConstraintLayout resultLayout;
@@ -40,20 +39,6 @@ public class ResultsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_results);
         setTitle("Results");
         percentAlcohol = findViewById(R.id.percentAlcohol);
-
-        // Setup Back button
-        backButton = findViewById(R.id.back_button);
-        backButton.setOnClickListener(view -> {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-
-            // add last BAC reading to the history database
-            History lastData = new History();
-            lastData.setBac(Float.valueOf(bac));
-            lastData.setTimeStamp();
-            DatabaseHandler db = new DatabaseHandler(ResultsActivity.this);
-            db.addHistory(lastData);
-        });
 
 
 

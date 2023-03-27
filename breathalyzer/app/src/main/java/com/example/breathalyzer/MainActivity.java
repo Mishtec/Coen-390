@@ -1,9 +1,13 @@
 package com.example.breathalyzer;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -11,6 +15,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.breathalyzer.ui.LoadingActivity;
+import com.example.breathalyzer.util.SettingsActivity;
 
 
 public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
@@ -23,8 +28,10 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("Home");
+     //   setTitle("Home");
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         //Setup TakeRead button
         readButton = findViewById(R.id.takeRead);
@@ -45,6 +52,8 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         //Setup Drink Water button
         drinkButton = findViewById(R.id.drinkReminder);
         drinkButton.setOnCheckedChangeListener(this);
+
+
     }
 
 
@@ -67,42 +76,30 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
     }
 
-    //If there is anything to set up in the future for app start up
-    //For set up device
-//    @Override
-//    protected void onStart()
-//    {
-//        super.onStart();
-//        setUI();
-//    }
+    //Press Menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
 
-//    private void setUI()
-//    {
-//        readButton = findViewById(R.id.takeRead);
-//        readButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(getApplicationContext(), "Measuring...", Toast.LENGTH_SHORT).show();
-//                launchLoadingPage(); // launchMeasurementPage();
-//                // For testing purpose skip loadingPage
-//            }
-//        });
-//    }
+    //Menu items
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.settings) {
+            Alerts("Opened Setting");
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
-//    public void launchLoadingPage()
-//    {
-//        //launch a new activity MeasurementPage
-//        Intent i = new Intent(this, LoadingAcitiviy.class);//
-//        startActivity(i);
-//    }
+//        if(id==R.id.){
+//            Alerts("");
+//           return true;
 
-//    public void launchResultsPage()
-//    {
-//        //launch a new activity MeasurementPage
-//        Intent i = new Intent(this, ResultsActivity.class);//
-//        startActivity(i);
-//    }
-//
-//
+
 
 }
