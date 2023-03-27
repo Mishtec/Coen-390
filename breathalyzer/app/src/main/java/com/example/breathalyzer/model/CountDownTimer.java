@@ -3,7 +3,15 @@ package com.example.breathalyzer.model;
 public class CountDownTimer {
 
     private int hours, minutes, seconds;
-    String timeLeft;
+    private String timeLeft;
+
+    public String getTimeLeft() {
+        return timeLeft;
+    }
+
+    public void setTimeLeft(String timeLeft) {
+        this.timeLeft = timeLeft;
+    }
 
     public CountDownTimer(){
 
