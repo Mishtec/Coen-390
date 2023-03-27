@@ -79,6 +79,8 @@ public class ResultsActivity extends AppCompatActivity {
 
                 float bacFloat = Float.parseFloat(bac);
                 //float bacFloat = (float) 0.06; //use this line to test variable message. comment out previous line.
+                percentAlcohol.setText(bacFloat + " %");
+
                 resultMessage = findViewById(R.id.resultMessage);
                 resultLayout = findViewById(R.id.resultLayout);
 
