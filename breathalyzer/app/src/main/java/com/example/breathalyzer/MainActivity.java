@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         //Setup TakeRead button
         readButton = findViewById(R.id.takeRead);
         readButton.setOnClickListener(view -> {
-            Toast.makeText(getApplicationContext(), "Measuring...", Toast.LENGTH_SHORT).show();
+            Alerts("Measuring...");
             Intent i = new Intent(this, LoadingActivity.class);
             startActivity(i); // launchMeasurementPage();
             // For testing purpose skip loadingPage
@@ -38,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, HistoryActivity.class);
             startActivity(intent);
         });
+    }
+    //send Alerts through user input String
+    public void Alerts(String input)
+    {
+        Toast.makeText(this, input, Toast.LENGTH_SHORT).show();
     }
 
     //If there is anything to set up in the future for app start up
@@ -76,10 +81,6 @@ public class MainActivity extends AppCompatActivity {
 //        startActivity(i);
 //    }
 //
-//    //send Alerts through user input String
-//    public void Alerts(String input)
-//    {
-//        Toast.makeText(this, input, Toast.LENGTH_LONG).show();
-//    }
+//
 
 }
