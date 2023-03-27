@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
     private Button readButton;
     private Button historyButton;
-    private Switch drinkButton;
+    private Switch drinkReminderSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         });
 
         //Setup Drink Water button
-        drinkButton = findViewById(R.id.drinkReminder);
-        drinkButton.setOnCheckedChangeListener(this);
+        drinkReminderSwitch = findViewById(R.id.drinkReminderSwitch);
+        drinkReminderSwitch.setOnCheckedChangeListener(this);
 
 
     }
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
         switch (compoundButton.getId()){
-            case R.id.drinkReminder:
+            case R.id.drinkReminderSwitch:
                 if (b)
                     Alerts("Reminder ON");
                 else
