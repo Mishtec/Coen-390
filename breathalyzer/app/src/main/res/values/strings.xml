@@ -4,4 +4,7 @@
     <string name="be_sure_to_take_a_deep_breath_and_exhale_into_mouthpiece">Be sure to take a deep breath and exhale into mouthpiece</string>
     <string name="db_drop" />
     <string name="resultMessage">placeholder</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="settings">Settings</string>
 </resources>

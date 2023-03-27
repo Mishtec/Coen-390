@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HistoryActivity">
+    tools:context=".ui.SettingsActivity">
 
     <androidx.appcompat.widget.Toolbar
 
@@ -12,19 +12,18 @@
         android:layout_height="wrap_content"
         android:id="@+id/toolbar"
         android:background="@color/purple_500"
-        app:title="History"
+        app:title="Settings"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <ListView
-        android:id="@+id/history_listView"
-        android:layout_width="399dp"
-        android:layout_height="674dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/waterSettings"
+        android:layout_width="260dp"
+        android:layout_height="29dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.216"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.0" />
+        app:srcCompat="@drawable/waterdrinkingsettings" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
