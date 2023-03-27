@@ -15,12 +15,12 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.breathalyzer.ui.LoadingActivity;
-import com.example.breathalyzer.util.SettingsActivity;
+import com.example.breathalyzer.ui.SettingsActivity;
 
 
 public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
-    protected Button readButton;
+    private Button readButton;
     private Button historyButton;
     private Switch drinkButton;
 

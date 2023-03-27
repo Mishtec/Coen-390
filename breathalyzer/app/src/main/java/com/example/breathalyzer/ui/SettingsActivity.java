@@ -1,4 +1,4 @@
-package com.example.breathalyzer.util;
+package com.example.breathalyzer.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
