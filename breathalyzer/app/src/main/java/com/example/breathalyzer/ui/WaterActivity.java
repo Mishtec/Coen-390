@@ -12,9 +12,11 @@ import android.widget.TextView;
 
 import com.example.breathalyzer.MainActivity;
 import com.example.breathalyzer.R;
+import com.example.breathalyzer.model.CountDownTimer;
 
 public class WaterActivity extends AppCompatActivity {
     MainActivity activity;
+    CountDownTimer timer;
 
     private EditText userInput;
     private TextView timeRemaining;
@@ -45,9 +47,14 @@ public class WaterActivity extends AppCompatActivity {
                 return;
             }
             //Set timer here
+            timer = new CountDownTimer();
+            timer.setTime(input);
+            timer.setUpTimer();
+            timeRemaining.setText(timer.getTimeLeft());
+
 
             //Reset Minutes placeholder
-            userInput.setText("Minute");
+            userInput.setText("");
         });
     }
 }
