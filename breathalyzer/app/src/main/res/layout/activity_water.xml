@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.WaterActivity">
 
+    <Button
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="116dp"
+        android:text="RESET"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"  />
+
     <androidx.appcompat.widget.Toolbar
 
         android:layout_width="match_parent"
@@ -20,14 +33,13 @@
         android:id="@+id/setMinutes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginBottom="116dp"
         android:text="SET"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/minutes" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/waterMessage"
@@ -46,18 +58,19 @@
         android:id="@+id/minutes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="148dp"
         android:hint="Minutes"
-        android:textSize="20sp"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/reset"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeRemaining" />
+        app:layout_constraintTop_toBottomOf="@+id/timeRemaining"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/timeRemaining"
-        android:layout_width="248dp"
+        android:layout_width="212dp"
         android:layout_height="111dp"
         android:layout_marginTop="24dp"
         android:text="00:00:00"
@@ -67,6 +80,31 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/waterMessage" />
+
+    <Button
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="148dp"
+        android:text="Start"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/reset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.319"
+        app:layout_constraintStart_toEndOf="@+id/minutes"
+        app:layout_constraintTop_toBottomOf="@+id/timeRemaining"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Switch
+        android:id="@+id/drinkReminderSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:minHeight="48dp"
+        android:text="Water Reminder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeRemaining" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

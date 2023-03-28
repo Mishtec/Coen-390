@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.breathalyzer.ui.LoadingActivity;
 import com.example.breathalyzer.ui.SettingsActivity;
+import com.example.breathalyzer.ui.WaterActivity;
 
 
 public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     private Button readButton;
     private Button historyButton;
     private Switch drinkReminderSwitch;
+    WaterActivity waterActivity = new WaterActivity();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,10 +70,21 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
         switch (compoundButton.getId()){
             case R.id.drinkReminderSwitch:
-                if (b)
+                if (b){
+                    if(!waterActivity.isTimerRunning()){
+                        Intent intent = new Intent(this, WaterActivity.class);
+                        startActivity(intent);
+                    }
                     Alerts("Reminder ON");
-                else
+                }
+                else{
+                    if(waterActivity.isTimerRunning()){
+                        Intent intent = new Intent(this, WaterActivity.class);
+                        startActivity(intent);
+                    }
                     Alerts("Reminder OFF");
+                }
+
                 break;
         }
 
