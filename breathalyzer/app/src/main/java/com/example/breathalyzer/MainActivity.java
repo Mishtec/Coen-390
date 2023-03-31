@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.breathalyzer.ui.LoadingActivity;
 import com.example.breathalyzer.ui.SettingsActivity;
+import com.example.breathalyzer.ui.WaterActivity;
 
 
 public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
@@ -23,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     private Button readButton;
     private Button historyButton;
     private Switch drinkReminderSwitch;
+    WaterActivity waterActivity = new WaterActivity();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,15 +69,45 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
         switch (compoundButton.getId()){
             case R.id.drinkReminderSwitch:
-                if (b)
-                    Alerts("Reminder ON");
-                else
+                if (b){
+                   editor.putBoolean("reminder", true);
+                    editor.apply();
+                    if(!prefs.getBoolean("timerRunning", false))
+                    {
+                        Intent intent = new Intent(this, WaterActivity.class);
+                        startActivity(intent);
+                        Alerts("Start Reminder ON");
+
+                    }
+                }
+                else{
+                    editor.putBoolean("reminder", false);
                     Alerts("Reminder OFF");
+                    editor.apply();
+                }
+
                 break;
         }
 
+    }
+
+    @Override
+    protected void onStart() {
+
+        super.onStart();
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        if (prefs.getBoolean("reminder", false))
+        {
+            drinkReminderSwitch.setChecked(true);
+        }
+
+        else
+            drinkReminderSwitch.setChecked(false);
     }
 
     //Press Menu
