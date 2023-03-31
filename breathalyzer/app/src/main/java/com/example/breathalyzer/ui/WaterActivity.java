@@ -4,21 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 
-import android.content.Intent;
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.breathalyzer.MainActivity;
+
 import com.example.breathalyzer.R;
 import com.example.breathalyzer.model.Timer;
 
@@ -31,7 +28,7 @@ public class WaterActivity extends AppCompatActivity {
     private Button setMinutes, reset, start;
     private long clock;
     private boolean timerRunning;
-    private Switch drinkReminderSwitch;
+
 
 
     @Override
@@ -46,9 +43,6 @@ public class WaterActivity extends AppCompatActivity {
         setMinutes = findViewById(R.id.setMinutes);
         reset = findViewById(R.id.reset);
         start = findViewById(R.id.start);
-        //Setup Drink Water button
-        drinkReminderSwitch = findViewById(R.id.drinkReminderSwitch);
-        drinkReminderSwitch.setOnCheckedChangeListener(this::onCheckedChanged);
 
 
         setMinutes.setOnClickListener(v -> {
@@ -110,22 +104,6 @@ public class WaterActivity extends AppCompatActivity {
         });
     }
 
-
-    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-        switch (compoundButton.getId()){
-            case R.id.drinkReminderSwitch:
-                if (b){
-                    Toast.makeText(this, "Reminder ON", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(this, "Reminder OFF", Toast.LENGTH_SHORT).show();
-                }
-
-                break;
-        }
-
-    }
-
     public void startTimer() {
         clock = System.currentTimeMillis();
         timer.setEndOfTimer(clock + timer.getRemainingTime());
@@ -139,10 +117,22 @@ public class WaterActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                setTimerRunning(false);
-                setMinutes.setVisibility(View.VISIBLE);
-                reset.setVisibility(View.INVISIBLE);
-                start.setVisibility(View.VISIBLE);
+                SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+
+                boolean  reminder = prefs.getBoolean("reminder", false);
+                if (reminder == true)
+                {
+                    countDownTimer.cancel();
+                    timer.setRemainingTime(timer.getStartOfTimer());
+                    startTimer();
+                }
+                else
+                {
+                    setTimerRunning(false);
+                    setMinutes.setVisibility(View.VISIBLE);
+                    reset.setVisibility(View.INVISIBLE);
+                    start.setVisibility(View.VISIBLE);
+                }
 
 
             }

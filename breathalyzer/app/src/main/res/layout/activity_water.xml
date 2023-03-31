@@ -95,16 +95,5 @@
         app:layout_constraintTop_toBottomOf="@+id/timeRemaining"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Switch
-        android:id="@+id/drinkReminderSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:minHeight="48dp"
-        android:text="Water Reminder"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeRemaining" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

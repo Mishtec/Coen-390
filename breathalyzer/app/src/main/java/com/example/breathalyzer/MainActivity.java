@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -68,26 +69,36 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
         switch (compoundButton.getId()){
             case R.id.drinkReminderSwitch:
                 if (b){
-                    if(!waterActivity.isTimerRunning()){
-                        Intent intent = new Intent(this, WaterActivity.class);
-                        startActivity(intent);
-                    }
+                   editor.putBoolean("reminder", true);
                     Alerts("Reminder ON");
+                    editor.apply();
                 }
                 else{
-                    if(waterActivity.isTimerRunning()){
-                        Intent intent = new Intent(this, WaterActivity.class);
-                        startActivity(intent);
-                    }
+                    editor.putBoolean("reminder", false);
                     Alerts("Reminder OFF");
+                    editor.apply();
                 }
 
                 break;
         }
 
+    }
+
+    @Override
+    protected void onStart() {
+
+        super.onStart();
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        if (prefs.getBoolean("reminder", false))
+            drinkReminderSwitch.setChecked(true);
+        else
+            drinkReminderSwitch.setChecked(false);
     }
 
     //Press Menu
