@@ -125,9 +125,12 @@ public class WaterActivity extends AppCompatActivity {
                     countDownTimer.cancel();
                     timer.setRemainingTime(timer.getStartOfTimer());
                     startTimer();
+
+
                 }
                 else
                 {
+                    countDownTimer.cancel();
                     setTimerRunning(false);
                     setMinutes.setVisibility(View.VISIBLE);
                     reset.setVisibility(View.INVISIBLE);
@@ -183,6 +186,7 @@ public class WaterActivity extends AppCompatActivity {
                 if (timer.getRemainingTime() < 0) {
                     timer.setRemainingTime(0);
                     setTimerRunning(false);
+                    Toast.makeText(this, "Timer Finished", Toast.LENGTH_SHORT).show();
                     updateUI();
                 } else {
                     startTimer();

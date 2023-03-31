@@ -76,8 +76,14 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             case R.id.drinkReminderSwitch:
                 if (b){
                    editor.putBoolean("reminder", true);
-                    Alerts("Reminder ON");
                     editor.apply();
+                    if(!prefs.getBoolean("timerRunning", false))
+                    {
+                        Intent intent = new Intent(this, WaterActivity.class);
+                        startActivity(intent);
+                        Alerts("Start Reminder ON");
+
+                    }
                 }
                 else{
                     editor.putBoolean("reminder", false);
@@ -96,7 +102,10 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         super.onStart();
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         if (prefs.getBoolean("reminder", false))
+        {
             drinkReminderSwitch.setChecked(true);
+        }
+
         else
             drinkReminderSwitch.setChecked(false);
     }

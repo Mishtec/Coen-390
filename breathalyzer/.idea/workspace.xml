@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02df5020-d3fe-49a9-b160-58c503d122c3" name="Changes" comment="ui drink time update">
+    <list default="true" id="02df5020-d3fe-49a9-b160-58c503d122c3" name="Changes" comment="loop working">
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
@@ -17,11 +17,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/breathalyzer/HistoryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/breathalyzer/HistoryActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/breathalyzer/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/breathalyzer/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/breathalyzer/model/CountDownTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/breathalyzer/model/Timer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/breathalyzer/ui/WaterActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/breathalyzer/ui/WaterActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_water.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_water.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,17 +97,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "android-custom-viewC:/Users/Amir/AppData/Local/Android/Sdk/sources/android-33/android/widget/ProgressBar.java_SELECTED": "ProgressBar",
-    "cidr.known.project.marker": "true",
-    "last_directory_selection": "C:/Users/Amir/Documents/GitHub/Coen-390/breathalyzer/app/src/test/java",
-    "last_opened_file_path": "C:/Users/amish/OneDrive/Winter 2023/Coen 390/SharedPreferences/SharedPreferences/app"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;android-custom-viewC:/Users/Amir/AppData/Local/Android/Sdk/sources/android-33/android/widget/ProgressBar.java_SELECTED&quot;: &quot;ProgressBar&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/Amir/Documents/GitHub/Coen-390/breathalyzer/app/src/test/java&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/amish/OneDrive/Winter 2023/Coen 390/SharedPreferences/SharedPreferences/app&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="android.template.-2065696140">
       <recent name="com.example.breathalyzer.util" />
@@ -265,7 +262,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679967633042</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="loop working">
+      <created>1680251845512</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1680251845513</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -284,6 +288,7 @@
     <MESSAGE value="drinkReminder switch added" />
     <MESSAGE value="CountDownTimer class added" />
     <MESSAGE value="ui drink time update" />
-    <option name="LAST_COMMIT_MESSAGE" value="ui drink time update" />
+    <MESSAGE value="loop working" />
+    <option name="LAST_COMMIT_MESSAGE" value="loop working" />
   </component>
 </project>
