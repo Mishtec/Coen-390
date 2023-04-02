@@ -5,9 +5,17 @@ import androidx.appcompat.widget.Toolbar;
 
 
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.SystemClock;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -17,18 +25,20 @@ import android.widget.Toast;
 
 
 import com.example.breathalyzer.R;
+import com.example.breathalyzer.model.NotificationPublisher;
 import com.example.breathalyzer.model.Timer;
 
 public class WaterActivity extends AppCompatActivity {
     Timer timer;
     CountDownTimer countDownTimer;
+   
 
     private EditText userInput;
     private TextView timeRemaining;
     private Button setMinutes, reset, start;
     private long clock;
-    private boolean timerRunning;
 
+    private boolean timerRunning;
 
 
     @Override
@@ -44,7 +54,14 @@ public class WaterActivity extends AppCompatActivity {
         reset = findViewById(R.id.reset);
         start = findViewById(R.id.start);
 
+        createNotificationChannel();
 
+        // Create an explicit intent for an Activity in your app
+        Intent intent = new Intent(this, NotificationPublisher.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+
+        
         setMinutes.setOnClickListener(v -> {
             String input = userInput.getText().toString();
             if (input.length() == 0) {
@@ -52,8 +69,8 @@ public class WaterActivity extends AppCompatActivity {
 
                 return;
             }
-            long timeInMilli = Long.parseLong(input)*60000;
-            if (timeInMilli == 0){
+            long timeInMilli = Long.parseLong(input) * 60000;
+            if (timeInMilli == 0) {
                 Toast.makeText(this, "Error...", Toast.LENGTH_SHORT).show();
 
                 return;
@@ -69,9 +86,12 @@ public class WaterActivity extends AppCompatActivity {
             userInput.setText("");
         });
 
-        start.setOnClickListener(v->{
+        start.setOnClickListener(v -> {
 
-            if(isTimerRunning() == true){
+            SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+            boolean  reminder = prefs.getBoolean("reminder", false);
+
+            if (isTimerRunning()) {
                 setMinutes.setVisibility(View.INVISIBLE);
                 reset.setVisibility(View.VISIBLE);
                 start.setVisibility(View.INVISIBLE);
@@ -82,6 +102,22 @@ public class WaterActivity extends AppCompatActivity {
                 if (visibility == 0) {
                     Toast.makeText(this, "Must Set...", Toast.LENGTH_SHORT).show();
                 } else {
+
+                    AlarmManager alarmMgr = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                        if (reminder) {
+
+                            alarmMgr.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                                    SystemClock.elapsedRealtime() + timer.getStartOfTimer(),
+                                    timer.getStartOfTimer(), pendingIntent);
+
+                        }
+                        else{
+                            alarmMgr.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                                    SystemClock.elapsedRealtime() +
+                                            timer.getStartOfTimer(), pendingIntent);
+                        }
+
+                    
                     startTimer();
                 }
             }
@@ -89,9 +125,9 @@ public class WaterActivity extends AppCompatActivity {
         });
 
         //RESET TIMER
-        reset.setOnClickListener(v ->{
+        reset.setOnClickListener(v -> {
             timer.resetTimer();
-            if(isTimerRunning() == true){
+            if (isTimerRunning()) {
                 countDownTimer.cancel();
                 setMinutes.setVisibility(View.VISIBLE);
                 reset.setVisibility(View.INVISIBLE);
@@ -105,6 +141,11 @@ public class WaterActivity extends AppCompatActivity {
     }
 
     public void startTimer() {
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        boolean  reminder = prefs.getBoolean("reminder", false);
+
+
+
         clock = System.currentTimeMillis();
         timer.setEndOfTimer(clock + timer.getRemainingTime());
 
@@ -117,16 +158,12 @@ public class WaterActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
 
-                boolean  reminder = prefs.getBoolean("reminder", false);
-                if (reminder == true)
+                if (reminder)
                 {
                     countDownTimer.cancel();
                     timer.setRemainingTime(timer.getStartOfTimer());
                     startTimer();
-
-
                 }
                 else
                 {
@@ -135,13 +172,14 @@ public class WaterActivity extends AppCompatActivity {
                     setMinutes.setVisibility(View.VISIBLE);
                     reset.setVisibility(View.INVISIBLE);
                     start.setVisibility(View.VISIBLE);
+                    updateUI();
                 }
 
 
             }
         }.start();
         setTimerRunning(true);
-
+        updateUI();
         }
 
     @Override
@@ -157,6 +195,7 @@ public class WaterActivity extends AppCompatActivity {
         editor.putBoolean("timerRunning", isTimerRunning());
         editor.putLong("endTime", timer.getEndOfTimer());
 
+
         editor.apply();
         //End Shared Preferences
 
@@ -167,12 +206,14 @@ public class WaterActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-            timer = null;
-            timer = new Timer(600000*3);
+            if (timer == null){
+                timer = new Timer(600000*3);
+            }
+
             //Shared Preferences
             SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
 
-            timer.setStartOfTimer(prefs.getLong("startTimeInMillis", 600000*3)); //= prefs.getLong("startTimeInMillis", 600000*3);
+            timer.setStartOfTimer(prefs.getLong("startTimeInMillis", timer.getStartOfTimer())); //= prefs.getLong("startTimeInMillis", 600000*3);
             timer.setDisplayTime(prefs.getLong("millisLeft", timer.getStartOfTimer())); //  = prefs.getLong("millisLeft", setStartOfTimer);
             boolean  timerRunning= prefs.getBoolean("timerRunning", false);
             setTimerRunning(timerRunning);
@@ -208,6 +249,24 @@ public class WaterActivity extends AppCompatActivity {
 
     public void setTimerRunning(boolean timerRunning) {
         this.timerRunning = timerRunning;
+    }
+
+    private void createNotificationChannel(){
+        //O for oreo
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            CharSequence name = "DrinkWaterChannel";
+            String description = "Channel for Water Reminder";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("Water Notification", name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+
+        }
+
+
     }
 
 }
