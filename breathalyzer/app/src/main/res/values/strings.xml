@@ -1,10 +1,22 @@
 <resources>
     <string name="app_name">breathalyzer</string>
     <string name="take_reading">Take Reading</string>
-    <string name="be_sure_to_take_a_deep_breath_and_exhale_into_mouthpiece">Be sure to take a deep breath and exhale into mouthpiece</string>
+    <string name="logo">BreathEx</string>
     <string name="db_drop" />
     <string name="resultMessage">placeholder</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="settings">Settings</string>
+
+    <string name="help_reading_title">Steps for taking a reading.</string>
+    <string name="help_history_title">Reading History.</string>
+    <string name="help_water_title">Hydration Reminder.</string>
+
+    <string name="help_reading">1. Take a deep breath and exhale the entire breath into the mouthpiece while the loading screen is active.\n\n2. After the reading has been taken, a result page will appear.\n
+		\t- Green: 0.00 -> 0.05 %BAC. If the green result page appears; the user is not impaired.\n
+		\t- Orange: 0.05 -> 0.08 %BAC. If the orange result page appears; the user is impaired but under the legal limit. If the user absolutely must drive: it is recommended that the user waits drink free until their BAC returns to under 0.05 before driving.\n
+		\t- Red: 0.08 %BAC or greater. If the red result page appears; the user is intoxicated and should not operate a vehicle under any circumstances. It is recommended that the user take a break from alcohol consumption and drink plenty of water instead.
+    </string>
+    <string name="help_history">The user can view a local history of their readings under the History Tab in the drop down menu in the top right hand side of the app.\n</string>
+
+    <string name="help_water">The user can set a reminder to drink water that will push a notification to remind them to stay hydrated. The reminder is on a looped timer that the user sets the reminder for. The default is 30 minutes, but the user can set it to any number of minutes. Once the reminder is pushed, the timer restarts. The feature can be enabled or disabled under the water reminder tab of the drop down menu.</string>
+
+
 </resources>

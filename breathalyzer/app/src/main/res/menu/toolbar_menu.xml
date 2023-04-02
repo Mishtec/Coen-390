@@ -4,12 +4,20 @@
 
 
     <item
-        android:title="@string/settings"
-        android:id="@+id/settings"
+        android:title="Water Reminder"
+        android:id="@+id/water_reminder"
         app:showAsAction="never"
          />
-
-
+    <item
+        android:title="History"
+        android:id="@+id/history_button"
+        app:showAsAction="never"
+        />
+    <item
+        android:title="Help"
+        android:id="@+id/help_button"
+        app:showAsAction="never"
+        />
 
 
 </menu>

@@ -12,10 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/toolbar"
-        android:background="@color/purple_500"
+        android:background="@color/lapis"
         app:title="Results"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="10sp"
+        />
 
     <ImageView
         android:id="@+id/imageView"
@@ -24,48 +26,56 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:srcCompat="@drawable/water_drop" />
+        app:srcCompat="@drawable/water_drop"
+        android:padding="10sp"
+        />
 
     <TextView
         android:id="@+id/percentAlcohol"
-        android:layout_width="210dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/resultMessage"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/blackish"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/description_textView"
+        android:padding="10sp"/>
 
     <TextView
         android:id="@+id/resultMessage"
-        android:layout_width="287dp"
-        android:layout_height="147dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="@string/resultMessage"
         android:textAlignment="center"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="@color/blackish"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/percentAlcohol" />
+        app:layout_constraintTop_toBottomOf="@+id/percentAlcohol"
+        android:padding="10sp"/>
 
     <TextView
         android:id="@+id/description_textView"
-        android:layout_width="218dp"
-        android:layout_height="39dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="Your Blood Alcohol Content is"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/blackish"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:padding="10sp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

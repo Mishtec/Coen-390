@@ -20,11 +20,11 @@ import com.example.breathalyzer.ui.SettingsActivity;
 import com.example.breathalyzer.ui.WaterActivity;
 
 
-public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
+public class MainActivity extends AppCompatActivity { //implements CompoundButton.OnCheckedChangeListener {
 
     private Button readButton;
-    private Button historyButton;
-    private Switch drinkReminderSwitch;
+   // private Button historyButton;
+    //private Switch drinkReminderSwitch;
     WaterActivity waterActivity = new WaterActivity();
 
 
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             // For testing purpose skip loadingPage
         });
 
-        //Setup History button
+        /*//Setup History button
         historyButton = findViewById(R.id.history_button);
         historyButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, HistoryActivity.class);
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
         //Setup Drink Water button
         drinkReminderSwitch = findViewById(R.id.drinkReminderSwitch);
-        drinkReminderSwitch.setOnCheckedChangeListener(this);
+        drinkReminderSwitch.setOnCheckedChangeListener(this);*/
 
 
     }
@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     {
         Toast.makeText(this, input, Toast.LENGTH_SHORT).show();
     }
-
-    @Override
+//NEXT TWO FUNCTIONS SHOULD BE MOVED TO WATER REMINDER
+   /* @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     }
 
     @Override
-    protected void onStart() {
+    protected void onStart() { //move to water activity
 
         super.onStart();
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
         else
             drinkReminderSwitch.setChecked(false);
-    }
+    } */
 
     //Press Menu
     @Override
@@ -121,19 +121,26 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.settings) {
+        if (id == R.id.water_reminder) {
             Alerts("Opened Setting");
-            Intent intent = new Intent(this, SettingsActivity.class);
+            Intent intent = new Intent(this, WaterActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        if (id == R.id.help_button) {
+            Alerts("Opened Setting");
+            Intent intent = new Intent(this, HelpActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        if (id == R.id.history_button) {
+            Alerts("Opened Setting");
+            Intent intent = new Intent(this, HistoryActivity.class);
             startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
-
-//        if(id==R.id.){
-//            Alerts("");
-//           return true;
-
 
 
 }

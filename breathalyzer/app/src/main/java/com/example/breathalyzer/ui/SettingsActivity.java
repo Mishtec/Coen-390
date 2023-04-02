@@ -22,10 +22,10 @@ public class SettingsActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
-        waterSettings = findViewById(R.id.waterSettings);
-        waterSettings.setOnClickListener(v -> {
-            Intent intent = new Intent(this, WaterActivity.class);
-            startActivity(intent);
-        });
+       // waterSettings = findViewById(R.id.waterSettings);
+        // waterSettings.setOnClickListener(v -> {
+           // Intent intent = new Intent(this, WaterActivity.class);
+           // startActivity(intent);
+        //});
     }
 }

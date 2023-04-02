@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#216869"
-    android:padding="16dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#70A37F">
+
+    <androidx.appcompat.widget.Toolbar
+
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/lapis"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Loading" />
+
 
     <TextView
 
@@ -18,21 +27,31 @@
         android:layout_above="@+id/progress_bar"
         android:layout_centerHorizontal="true"
         android:text="0%"
-        android:textColor="#FCBCB8"
-        android:textSize="25sp" />
-
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/loading_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Disclaimer"
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
 
         android:id="@+id/loading_text"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/text_view"
-        android:layout_marginBottom="36dp"
         android:text=". . . Processing Data . . ."
         android:textAlignment="center"
-        android:textColor="#FCBCB8"
-        android:textSize="20sp" />
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Disclaimer"
+        app:layout_constraintVertical_bias="0.5" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -40,34 +59,43 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="262dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loading_text"
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/Disclaimer"
-        android:layout_width="395dp"
-        android:layout_height="194dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/loading_text"
         android:layout_below="@+id/imageView3"
-        android:layout_marginTop="7dp"
-        android:layout_marginBottom="51dp"
         android:lineSpacingExtra="2sp"
         android:text="The sole purpose of this product is to detect the possibility of alcohol in the bloodstream.\nThe user should take full responsibility for his or her own decision to operate a vehicle after doing this test."
-        android:textAlignment="viewStart"
-        android:textColor="#D3CBCA"
-        android:textSize="16sp"
-        android:textStyle="italic" />
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="58dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="150dp"
+        app:layout_constraintBottom_toTopOf="@+id/Disclaimer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.5"
         app:srcCompat="@drawable/disclamer" />
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
