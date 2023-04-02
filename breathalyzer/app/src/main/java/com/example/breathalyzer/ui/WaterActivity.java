@@ -110,7 +110,7 @@ public class WaterActivity extends AppCompatActivity {
                                     SystemClock.elapsedRealtime() + timer.getStartOfTimer(),
                                     timer.getStartOfTimer(), pendingIntent);
 
-
+                        }
                         else{
                             alarmMgr.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
                                     SystemClock.elapsedRealtime() +
