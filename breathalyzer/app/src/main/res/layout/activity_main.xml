@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#70A37F"
+    android:background="@color/otherwhite"
     tools:context=".MainActivity">
 
 
@@ -14,42 +14,63 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/lapis"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="Home" />
-
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/logo"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="@color/blackish"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toTopOf="@+id/takeRead"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="BreathEx"
+        app:titleTextColor="#F6F3F3" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="321dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.067"
+        app:srcCompat="@drawable/logo_ong"
+        tools:ignore="ContentDescription" />
 
-    <Button
-        android:id="@+id/takeRead"
+    <ImageButton
+        android:id="@+id/blow_button"
+        android:layout_width="104dp"
+        android:layout_height="106dp"
+        android:background="@color/otherwhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/blowbutton"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="355dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.384"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/blow_button"
+        app:layout_constraintVertical_bias="0.164"
+        app:srcCompat="@drawable/instructions"
+        tools:ignore="ContentDescription" />
+
+    <ImageButton
+        android:id="@+id/how_to_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/lapis"
-        android:padding="10sp"
-        android:text="@string/take_reading"
-        android:textColor="@color/blackish"
-        android:textSize="42sp"
-        app:iconTint="#BF7474"
+        android:background="@color/otherwhite"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/toolbar"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.854"
+        app:srcCompat="@drawable/info"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

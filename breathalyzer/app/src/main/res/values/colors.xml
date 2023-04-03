@@ -5,8 +5,9 @@
     <color name="blackish">#191716</color>
     <color name="wisteria">#B49FCC</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="green">#70A37F</color>
-    <color name="lapis">#41658A</color>
+    <color name="white">#FFFAF6</color>
+    <color name="green">#FFFAF6</color>
+    <color name="otherwhite">#FFFAF6</color>
+    <color name="lapis">#2f5ea9</color>
     <color name="colorAccent">#8DA7BE</color>
 </resources>

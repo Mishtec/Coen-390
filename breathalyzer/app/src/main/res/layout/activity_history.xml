@@ -9,13 +9,15 @@
 
     <androidx.appcompat.widget.Toolbar
 
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/toolbar"
         android:background="@color/lapis"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:title="History"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:titleTextColor="#FBFBFB" />
 
     <ListView
         android:id="@+id/history_listView"

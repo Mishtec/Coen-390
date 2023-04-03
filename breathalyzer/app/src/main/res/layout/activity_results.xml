@@ -9,15 +9,15 @@
 
     <androidx.appcompat.widget.Toolbar
 
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/toolbar"
         android:background="@color/lapis"
-        app:title="Results"
+        android:padding="10sp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintTop_toTopOf="parent"
-        android:padding="10sp"
-        />
+        app:title="Results"
+        app:titleTextColor="#FDFCFC" />
 
     <ImageView
         android:id="@+id/imageView"

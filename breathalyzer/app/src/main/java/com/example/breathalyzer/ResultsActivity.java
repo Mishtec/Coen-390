@@ -1,24 +1,21 @@
 package com.example.breathalyzer;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.breathalyzer.data.DatabaseHandler;
 import com.example.breathalyzer.model.History;
-import com.example.breathalyzer.ui.LoadingActivity;
-import com.example.breathalyzer.ui.WaterActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -46,6 +43,9 @@ public class ResultsActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        // enable back to home screen button
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -133,20 +133,20 @@ public class ResultsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.water_reminder) {
-            Alerts("Opened Setting");
-            Intent intent = new Intent(this, WaterActivity.class);
-            startActivity(intent);
-            return true;
-        }
+//        if (id == R.id.water_reminder) {
+//            Alerts("Opened Setting");
+//            Intent intent = new Intent(this, WaterActivity.class);
+//            startActivity(intent);
+//            return true;
+//        }
         if (id == R.id.help_button) {
-            Alerts("Opened Setting");
+//            Alerts("Opened Setting");
             Intent intent = new Intent(this, HelpActivity.class);
             startActivity(intent);
             return true;
         }
         if (id == R.id.history_button) {
-            Alerts("Opened Setting");
+//            Alerts("Opened Setting");
             Intent intent = new Intent(this, HistoryActivity.class);
             startActivity(intent);
             return true;

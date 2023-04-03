@@ -1,65 +1,86 @@
 package com.example.breathalyzer;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.Switch;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.breathalyzer.ui.LoadingActivity;
-import com.example.breathalyzer.ui.SettingsActivity;
-import com.example.breathalyzer.ui.WaterActivity;
+import com.example.breathalyzer.ui.OnBoardFirst;
 
+public class MainActivity extends AppCompatActivity {
+    HelpActivity.WaterActivity waterActivity = new HelpActivity.WaterActivity();
 
-public class MainActivity extends AppCompatActivity { //implements CompoundButton.OnCheckedChangeListener {
+    // used for how to guide pop up window
+    private ImageButton howToButton;
 
-    private Button readButton;
-   // private Button historyButton;
-    //private Switch drinkReminderSwitch;
-    WaterActivity waterActivity = new WaterActivity();
+    private ImageButton readButton;
 
-
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-     //   setTitle("Home");
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         //Setup TakeRead button
-        readButton = findViewById(R.id.takeRead);
+        readButton = findViewById(R.id.blow_button);
         readButton.setOnClickListener(view -> {
             Alerts("Measuring...");
             Intent i = new Intent(this, LoadingActivity.class);
             startActivity(i); // launchMeasurementPage();
-            // For testing purpose skip loadingPage
         });
 
-        /*//Setup History button
-        historyButton = findViewById(R.id.history_button);
-        historyButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, HistoryActivity.class);
-            startActivity(intent);
+        //Setup "how to guide" button
+        howToButton = findViewById(R.id.how_to_button);
+        howToButton.setOnClickListener(view -> {
+            Intent i = new Intent(this, OnBoardFirst.class);
+            startActivity(i);
         });
-
-        //Setup Drink Water button
-        drinkReminderSwitch = findViewById(R.id.drinkReminderSwitch);
-        drinkReminderSwitch.setOnCheckedChangeListener(this);*/
-
-
     }
 
+//    Press Menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
+
+    //Menu items
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+//        if (id == R.id.water_reminder) {
+//            Alerts("Opened Setting");
+//            Intent intent = new Intent(this, WaterActivity.class);
+//            startActivity(intent);
+//            return true;
+//        }
+        if (id == R.id.help_button) {
+            Alerts("Opened Setting");
+            Intent intent = new Intent(this, HelpActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        if (id == R.id.history_button) {
+            Alerts("Opened Setting");
+            Intent intent = new Intent(this, HistoryActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     //send Alerts through user input String
     public void Alerts(String input)
@@ -109,38 +130,4 @@ public class MainActivity extends AppCompatActivity { //implements CompoundButto
         else
             drinkReminderSwitch.setChecked(false);
     } */
-
-    //Press Menu
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
-        return true;
-    }
-
-    //Menu items
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.water_reminder) {
-            Alerts("Opened Setting");
-            Intent intent = new Intent(this, WaterActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        if (id == R.id.help_button) {
-            Alerts("Opened Setting");
-            Intent intent = new Intent(this, HelpActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        if (id == R.id.history_button) {
-            Alerts("Opened Setting");
-            Intent intent = new Intent(this, HistoryActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-
 }
