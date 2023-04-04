@@ -7,23 +7,26 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.breathalyzer.ui.LoadingActivity;
 import com.example.breathalyzer.ui.OnBoardFirst;
+import com.example.breathalyzer.ui.WaterActivity;
 
-public class MainActivity extends AppCompatActivity {
-    HelpActivity.WaterActivity waterActivity = new HelpActivity.WaterActivity();
+public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener{
 
     // used for how to guide pop up window
     private ImageButton howToButton;
-
     private ImageButton readButton;
+    private Switch drinkReminderSwitch;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -48,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
             Intent i = new Intent(this, OnBoardFirst.class);
             startActivity(i);
         });
+
+        //Setup Drink Water button
+        drinkReminderSwitch = findViewById(R.id.drinkReminderSwitch);
+        drinkReminderSwitch.setOnCheckedChangeListener(this);
     }
 
 //    Press Menu
@@ -61,12 +68,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-//        if (id == R.id.water_reminder) {
-//            Alerts("Opened Setting");
-//            Intent intent = new Intent(this, WaterActivity.class);
-//            startActivity(intent);
-//            return true;
-//        }
+        if (id == R.id.water_reminder) {
+            Alerts("Opened Setting");
+            Intent intent = new Intent(this, WaterActivity.class);
+            startActivity(intent);
+            return true;
+        }
         if (id == R.id.help_button) {
             Alerts("Opened Setting");
             Intent intent = new Intent(this, HelpActivity.class);
@@ -87,8 +94,7 @@ public class MainActivity extends AppCompatActivity {
     {
         Toast.makeText(this, input, Toast.LENGTH_SHORT).show();
     }
-//NEXT TWO FUNCTIONS SHOULD BE MOVED TO WATER REMINDER
-   /* @Override
+    @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
@@ -96,12 +102,10 @@ public class MainActivity extends AppCompatActivity {
         switch (compoundButton.getId()){
             case R.id.drinkReminderSwitch:
                 if (b){
-                   editor.putBoolean("reminder", true);
+                    editor.putBoolean("reminder", true);
                     editor.apply();
                     if(!prefs.getBoolean("timerRunning", false))
                     {
-                        Intent intent = new Intent(this, WaterActivity.class);
-                        startActivity(intent);
                         Alerts("Start Reminder ON");
 
                     }
@@ -111,15 +115,12 @@ public class MainActivity extends AppCompatActivity {
                     Alerts("Reminder OFF");
                     editor.apply();
                 }
-
                 break;
         }
-
     }
 
     @Override
-    protected void onStart() { //move to water activity
-
+    protected void onStart() {
         super.onStart();
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         if (prefs.getBoolean("reminder", false))
@@ -129,5 +130,6 @@ public class MainActivity extends AppCompatActivity {
 
         else
             drinkReminderSwitch.setChecked(false);
-    } */
+    }
+
 }

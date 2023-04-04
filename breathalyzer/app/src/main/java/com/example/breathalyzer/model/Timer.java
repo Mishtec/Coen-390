@@ -104,8 +104,5 @@ public class Timer {
         setRemainingTime(getStartOfTimer());
     }
 
-
-
-
 }
 
